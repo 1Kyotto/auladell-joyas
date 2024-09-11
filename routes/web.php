@@ -29,6 +29,8 @@ Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordUp
 //Administrador
 Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::get('/dashboard/product-managment', [AdminController::class, 'productManagment'])->name('admin.product-managment')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 
 //Categorías Productos
 Route::get('/joyas/brazaletes',[ProductController::class, 'braceletsIndex'])->name('bracelets.index');
