@@ -55,5 +55,6 @@
                 Servicio al cliente
               </div>
 	    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.js"></script>
     </body>
 </html>
