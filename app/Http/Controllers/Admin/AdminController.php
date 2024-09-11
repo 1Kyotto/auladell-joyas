@@ -10,4 +10,9 @@ class AdminController
     {
         return view('admin.index');
     }
+
+    public function productManagment()
+    {
+        return view('admin.product-managment');
+    }
 }
