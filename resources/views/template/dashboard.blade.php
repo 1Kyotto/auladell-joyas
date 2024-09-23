@@ -3,45 +3,63 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <title>Laravel</title>
         @vite('resources/css/app.css')
 
     </head>
-    <body class="grid grid-cols-12 text-center h-screen">
-        <div class="col-span-2 bg-blue-600">
+    <body class="grid grid-cols-12 text-center bg-slate-500">
+        {{--NAVBAR--}}
+        <div class="col-span-12 bg-teal-500 sticky top-0 z-10 shadow-md">
+            <div class="bg-slate-400 mx-16">
+                navbar
+            </div>
+
+            <div class="border-b"></div>
+
+            <div class="bg-slate-400 mx-16" id="navbar">
+                navbar
+            </div>
+        </div>
+        {{--NAVBAR--}}
+
+        {{--SIDEBAR--}}
+        <div class="col-span-3 bg-red-400 pl-16">
             SIDEBAR
         </div>
-        <div class="col-span-10 grid grid-cols-4 grid-rows-12 bg-orange-600">
-            <div class="bg-teal-400 row-span-2 col-span-4 grid grid-cols-9 grid-rows-2">
-                <div class="row-span-1 grid grid-cols-3 col-span-9 border-b border-black">
-                    <div class="">01</div>
-                    <div class="">02</div>
-                    <div>
-                        @auth
-                        <p>Bienvenido, {{ Auth::user()->name }}!</p>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit">Cerrar Sesión</button>
-                        </form>
-                        @endauth
-                        
-                        @guest
-                            <a href="{{ route('login') }}">Iniciar Sesión</a>
-                        @endguest
-                    </div>
-                </div>
+        {{--SIDEBAR--}}
+        
+        {{--CONTENIDO--}}
+        @yield('contenido')
+        {{--CONTENIDO--}}
 
-                <div class="row-span-1 grid grid-cols-6 col-span-9">
-                    <div class="">04</div>
-                    <div class="">05</div>
-                    <div class="">06</div>
-                    <div class="">07</div>
-                    <div class="">08</div>
-                    <div class="">09</div>
+        {{--FOOTER--}}
+        <footer class="col-span-12 bg-cyan-600 grid grid-cols-3 border-t">
+            <div class="col-span-3 grid grid-cols-3 mx-16 bg-slate-400">
+                <div class="col-span-1 text-center">
+                    Redes sociales
+                </div>
+                <div class="col-span-1 text-center">
+                    Informacion
+                </div>
+                <div class="col-span-1 text-center">
+                    Servicio al cliente
                 </div>
             </div>
-            @yield('contenido')
-        </div>
+        </footer>
+        {{--FOOTER--}}
+
+        {{--SOMBRA NAVBAR--}}
+        <script>
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 0) {
+                    navbar.classList.add('shadow-md'); // Agrega sombra
+                } else {
+                    navbar.classList.remove('shadow-md'); // Quita sombra
+                }
+            });
+        </script>
+        {{--SOMBRA NAVBAR--}}
     </body>
 </html>

@@ -13,6 +13,6 @@ class AdminController
 
     public function productManagment()
     {
-        return view('admin.product-managment');
+        return view('admin.product');
     }
 }
