@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name',30);
             $table->text('description');
             $table->string('unit',10); //Unidad de medida: gr, kg, kl...
-            $table->decimal('price_per_unit',8,2); //Precio por cada unidad de medida
+            $table->decimal('price_per_unit',12,2); //Precio por cada unidad de medida
             $table->decimal('quantity_in_stock',5,2); 
             $table->timestamps();
         });

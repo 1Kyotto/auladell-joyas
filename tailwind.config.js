@@ -6,8 +6,22 @@ export default {
     "./resources/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'cinzel': ['Cinzel', 'serif'],
+        'fauna': ['Fauna One', 'serif'],
+      },
+      colors: {
+        'primario': '#FFFFF8',
+        'titulos': '#2F3E53',
+        'botones':'#213E3E',
+      },
+      textColor: {
+        primary: '#F4F5F7',
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
 
