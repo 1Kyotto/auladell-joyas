@@ -8,20 +8,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'cinzel': ['Cinzel', 'serif'],
-        'fauna': ['Fauna One', 'serif'],
+        'primario': ['Dancing Script', 'cursive'],
+        'secundario': ['Josefin Sans', 'sans-serif'],
       },
       colors: {
-        'primario': '#FFFFF8',
-        'titulos': '#2F3E53',
-        'botones':'#213E3E',
+        'color-primary': '#010E0B',
+        'color-secondary': '#0C221F',
+        'color-aux': '#00876A',
+        'color-bg': '#f5f5f5'
+
       },
       textColor: {
-        primary: '#F4F5F7',
+        'primary': '#010E0B',
+        'secondary': '#008769',
+        'aux': '#f5f5f5'
       },
     },
   },
   plugins: [
   ],
 }
-

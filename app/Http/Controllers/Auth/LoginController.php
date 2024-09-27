@@ -14,7 +14,6 @@ class LoginController
 
     public function login(Request $request)
     {
-        // Validar los datos del formulario
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
