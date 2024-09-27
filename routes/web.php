@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Cart\CartController;
 use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Products\ProductController;
+use App\Http\Controllers\Products\CategoryController;
 use App\Http\Controllers\Services\ServicesController;
 
 Route::get('/',[HomeController::class, 'index'])->name('home.index');
@@ -29,17 +30,23 @@ Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordUp
 //Administrador
 Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
-Route::get('/dashboard/product-managment', [AdminController::class, 'productManagment'])->name('admin.product-managment')
+Route::get('/dashboard/product', [AdminController::class, 'productManagment'])->name('admin.product')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+//Productos
+Route::get('/dashboard/product/create',[ProductController::class, 'create'])->name('product.create')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::post('/dashboard/product',[ProductController::class, 'store'])->name('product.store')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::get('/dashboard/product/{id}/edit',[ProductController::class, 'edit'])->name('product.edit')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::put('/dashboard/product/{id}',[ProductController::class, 'update'])->name('product.update')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::delete('/dashboard/product/{id}',[ProductController::class, 'destroy'])->name('product.destroy')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 
-//Categorías Productos
-Route::get('/joyas/brazaletes',[ProductController::class, 'braceletsIndex'])->name('bracelets.index');
-Route::get('/joyas/aros',[ProductController::class, 'earringsIndex'])->name('earrings.index');
-Route::get('/joyas/collares',[ProductController::class, 'necklacesIndex'])->name('necklaces.index');
-Route::get('/joyas/anillos',[ProductController::class, 'ringsIndex'])->name('rings.index');
-
-//Productos
-
+//Categoría Productos
+Route::get('/joyas/{type?}',[CategoryController::class, 'index'])->name('joyas.index');
+Route::get('/joyas/{id}',[ProductController::class, 'show'])->name('joyas.show');
 
 //Pedidos
 Route::get('/order-status',[OrderController::class, 'orderStatus'])->name('orders.order-status');

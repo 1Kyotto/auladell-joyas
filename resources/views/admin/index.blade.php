@@ -1,7 +1,9 @@
 @extends('template.dashboard')
 
 @section('contenido')
-<div class="MAIN col-span-4 row-span-10">
+{{--CONTENIDO--}}
+<div class="col-span-9 pr-16 h-[100vh]">
 	MAIN
 </div>
+{{--CONTENIDO--}}
 @endsection

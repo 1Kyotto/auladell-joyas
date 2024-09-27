@@ -1,12 +1,10 @@
-<!-- resources/views/emails/custom-reset-password.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Personaliza el estilo del correo aquí */
+        /*Personaliza el estilo del correo aquí*/
         body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
         .email-container { background-color: #ffffff; padding: 20px; border-radius: 8px; }
         .email-header { font-size: 24px; font-weight: bold; }

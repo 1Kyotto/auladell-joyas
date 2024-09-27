@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Products\Product;
 
 class AdminController
 {
@@ -13,6 +14,7 @@ class AdminController
 
     public function productManagment()
     {
-        return view('admin.product-managment');
+        $products = product::all();
+        return view('admin.product', compact('products'));
     }
 }
