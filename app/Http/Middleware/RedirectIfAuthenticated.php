@@ -15,10 +15,8 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, string $guard = null)
     {
-        // Verificar si el usuario está autenticado
         if (Auth::guard($guard)->check()) {
-            // Redirigir al home o al dashboard
-            return redirect()->route('home.index');  // Puedes cambiar esta ruta a lo que prefieras
+            return redirect()->route('home.index');
         }
 
         return $next($request);

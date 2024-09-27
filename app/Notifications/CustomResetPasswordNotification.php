@@ -36,18 +36,16 @@ class CustomResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        // URL de restablecimiento de contraseña
         $resetUrl = url(route('password.reset', [
             'token' => $this->token,
             'email' => $notifiable->getEmailForPasswordReset(),
         ], false));
 
-        // Personalizar el correo usando una vista Blade
         return (new \Illuminate\Notifications\Messages\MailMessage)
             ->subject('Restablece tu contraseña')
             ->view('emails.custom-reset-password', [
                 'resetUrl' => $resetUrl,
-                'user' => $notifiable,  // Pasamos el usuario a la vista para personalización
+                'user' => $notifiable,
             ]);
     }
 
