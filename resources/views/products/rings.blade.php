@@ -98,8 +98,8 @@
                     </a>
                 </div>
             </div>
-
         </div>
+
         <div class="col-span-1 mx-2">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <img class="rounded-t-lg p-1 rounded-xl" src="{{ asset('images/gato1.jpg') }}" alt="" />
@@ -115,6 +115,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-span-1 mx-2">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <img class="rounded-t-lg p-1 rounded-xl" src="{{ asset('images/gato1.jpg') }}" alt="" />
