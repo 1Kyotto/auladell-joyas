@@ -24,12 +24,10 @@ class ProductController
             'materials' => 'array'
         ]);
 
-        // Cálculo del Costo Base
         $hours_worked = $request->input('hours_worked');
         $hourly_rate = $request->input('hourly_rate');
         $cost_base = $hours_worked * $hourly_rate;
 
-        // Cálculo del Costo de los Materiales
         $materials = $request->input('materials');
         $cost_materials = 0;
 
@@ -38,22 +36,19 @@ class ProductController
                 $material = Material::find($material_id);
                 $quantity = $material_data['quantity'] ?? 0;
 
-                // Calculamos el costo de cada material multiplicando la cantidad por su precio por unidad
                 $cost_materials += $material->price_per_unit * $quantity;
             }
         }
 
-        // Cálculo del Precio Base Final
         $base_price = $cost_base + $cost_materials;
 
-        // Guardamos el producto en la base de datos
         Product::create([
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
             'base_price' => $base_price,
         ]);
 
-        return redirect()->route('admin.product')->with('success', 'Producto creado correctamente.');
+        return redirect()->route('admin.product')->with('success', 'El producto creado correctamente.');
     }
 
     public function show($id)

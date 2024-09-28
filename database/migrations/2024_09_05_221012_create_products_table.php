@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('name',100);
             $table->text('description');
             $table->decimal('base_price', 10, 2); // Formato de precio $99.999.999.99
+            $table->string('category', 10);
             $table->timestamps();
         });
     }

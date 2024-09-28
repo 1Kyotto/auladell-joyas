@@ -2,7 +2,7 @@
 
 @section('contenido')
 {{--CONTENIDO--}}
-<div class="col-span-9 bg-blue-500 pr-16">
+<div class="col-span-9 pr-16 h-[100vh]">
 	MAIN
 </div>
 {{--CONTENIDO--}}
