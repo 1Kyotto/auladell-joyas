@@ -15,6 +15,26 @@
         <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
     </div>
 
+    {{--CATEGORIA--}}
+    <div class="form-group">
+        <label for="category">Categoría</label>
+        <select name="category" id="category" class="form-control" required>
+            <option value="" disabled selected>Selecciona una categoría</option>
+            <option value="Aros">Aros</option>
+            <option value="Anillos">Anillos</option>
+            <option value="Brazaletes">Brazaletes</option>
+            <option value="Collares">Collares</option>
+        </select>
+    </div>
+    {{--CATEGORIA--}}
+
+    {{--CHECKBOX ESTADO--}}
+    <div class="form-group form-check">
+        <input type="checkbox" name="is_active" id="is_active" class="form-check-input" value="1" checked>
+        <label class="form-check-label" for="is_active">¿Producto activo?</label>
+    </div>
+    {{--CHECKBOX ESTADO--}}
+
     <div class="form-group">
         <label for="hours_worked">Horas de trabajo</label>
         <input type="number" name="hours_worked" id="hours_worked" class="form-control" step="0.1" min="0" required>
@@ -25,6 +45,7 @@
         <input type="number" name="hourly_rate" id="hourly_rate" class="form-control" step="0.01" min="0" required>
     </div>
 
+    {{--SELECCION MATERIALES--}}
     <div class="form-group">
         <label for="materials">Seleccionar materiales</label>
         <div class="input-group mb-3">
@@ -44,6 +65,7 @@
             <!-- Materiales seleccionados aparecerán aquí -->
         </div>
     </div>
+    {{--SELECCION MATERIALES--}}
 
     <button type="submit" class="btn btn-primary">Crear Producto</button>
 </form>

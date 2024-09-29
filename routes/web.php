@@ -43,6 +43,10 @@ Route::put('/dashboard/product/{id}',[ProductController::class, 'update'])->name
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 Route::delete('/dashboard/product/{id}',[ProductController::class, 'destroy'])->name('product.destroy')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::patch('/dashboard/product/{id}/toggle', [ProductController::class, 'toggleStatus'])->name('product.toggleStatus')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::get('/dashboard/product/{category?}', [ProductController::class, 'index'])->name('product.filter')
+    ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 
 //Categoría Productos
 Route::get('/joyas/{type?}',[CategoryController::class, 'index'])->name('joyas.index');

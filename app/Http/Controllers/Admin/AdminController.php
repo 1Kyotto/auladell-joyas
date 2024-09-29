@@ -12,9 +12,15 @@ class AdminController
         return view('admin.index');
     }
 
-    public function productManagment()
+    public function productManagment(Request $request, $category = null)
     {
-        $products = product::all();
+        if($category)
+        {
+            $products = Product::where('category', $category)->get();
+        }
+        else {
+            $products = product::all();
+        }
         return view('admin.product', compact('products'));
     }
 }

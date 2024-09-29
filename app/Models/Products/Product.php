@@ -14,7 +14,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'base_price'];
+    protected $fillable = ['name', 'description', 'base_price', 'category', 'is_active'];
 
     public function customizations()
     {

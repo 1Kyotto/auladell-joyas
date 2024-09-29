@@ -19,6 +19,8 @@ class ProductController
         $validatedData = $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string',
+            'category' => 'required|string|in:Aros,Anillos,Brazaletes,Collares',
+            'is_active' => 'sometimes|boolean',
             'hours_worked' => 'required|numeric|min:0',
             'hourly_rate' => 'required|numeric|min:0',
             'materials' => 'array'
@@ -46,6 +48,8 @@ class ProductController
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
             'base_price' => $base_price,
+            'category' => $validatedData['category'],
+            'is_active' => $request->has('is_active') ? $request->input('is_active') : true,
         ]);
 
         return redirect()->route('admin.product')->with('success', 'El producto creado correctamente.');
@@ -69,5 +73,18 @@ class ProductController
     public function destroy($id)
     {
         
+    }
+
+    public function toggleStatus(Request $request, $id)
+    {
+        // Buscar el producto por su ID
+        $product = Product::findOrFail($id);
+
+        // Actualizar el estado 'is_active' basado en si el checkbox está marcado o no
+        $product->is_active = $request->has('is_active');
+        $product->save();
+
+        // Redirigir de nuevo a la página de productos o donde prefieras
+        return redirect()->route('admin.product')->with('success', 'El estado del producto ha sido actualizado.');
     }
 }
