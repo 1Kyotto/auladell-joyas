@@ -13,12 +13,25 @@
             {{--Form de login--}}
             <form method="POST" action="{{ route('login') }}" class="flex flex-col items-start">
                 @csrf
+
+                {{--Mostrar mensajes de error--}}
+                @if ($errors->any())
+                <div class="bg-color-secondary text-white p-4 rounded mb-4 w-full">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                {{--Mostrar mensajes de error--}}
+
                 {{--Email--}}
-                <input id="email" class="outline-none w-full mb-3 bg-transparent border-b-2 placeholder-gray-900" placeholder="Correo Electrónico" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                <input id="email" class="outline-none w-full mb-3 bg-transparent border-b-2 placeholder-gray-900" placeholder="Correo Electrónico" type="text" name="email" value="{{ old('email') }}" autofocus>
                 {{--Email--}}
                 
                 {{--Contraseña--}}
-                <input id="password" class="outline-none w-full mb-2 bg-transparent border-b-2 placeholder-gray-900" placeholder="Contraseña" type="password" name="password" required autocomplete="current-password">
+                <input id="password" class="outline-none w-full mb-2 bg-transparent border-b-2 placeholder-gray-900" placeholder="Contraseña" type="password" name="password" autocomplete="current-password">
                 {{--Contraseña--}}
 
                 {{--Recuérdame--}}

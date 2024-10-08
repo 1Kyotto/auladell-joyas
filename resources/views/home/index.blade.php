@@ -2,7 +2,7 @@
 
 @section('contenido')
     {{--Main--}}
-    <div class="col-span-6 bg-[#87A196] px-32 flex justify-between font-secundario text-primary h-[80vh] items-center">
+    <div class="col-span-6 bg-[#87A196] px-32 flex justify-between font-secundario text-primary h-[85vh] items-center">
         <div class="max-w-[50%] min-w-[50%] py-20 text-start">
             <h1 class="font-primario text-6xl mb-6">¡Diseña tu joya única hoy! 
                 <br>
@@ -151,7 +151,7 @@
     {{--Trending--}}
 
     {{--Call to action 2--}}
-    <div class="col-span-6 bg-[#87A196] px-32 flex justify-between font-secundario text-primary h-[80vh] items-center">
+    <div class="col-span-6 bg-[#87A196] px-32 flex justify-between font-secundario text-primary h-[85vh] items-center">
         <div class="max-w-[50%] min-w-[50%] py-20 text-start">
             <h1 class="font-primario text-6xl mb-6">¡Diseña tu joya única hoy! 
                 <br>

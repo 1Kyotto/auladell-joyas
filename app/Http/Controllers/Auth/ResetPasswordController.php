@@ -16,15 +16,23 @@ class ResetPasswordController
         return view('auth.forgot-password');
     }
 
-    public function forgotPasswordEmail(Request $request) {
-        $request->validate(['email' => 'required|email']);
+    public function forgotPasswordEmail(Request $request) 
+    {
+        $messages = [
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'Debes ingresar un correo electrónico válido.',
+        ];
+
+        $request->validate([
+            'email' => ['required', 'email'],
+        ], $messages);
      
         $status = Password::sendResetLink(
             $request->only('email')
         );
      
         return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
+                    ? back()->with('status', 'Se ha enviado un correo para el restablecimiento de la contraseña.')
                     : back()->withErrors(['email' => __($status)]);
     }
 
@@ -33,11 +41,19 @@ class ResetPasswordController
     }
 
     public function resetPasswordUpdate(Request $request) {
-        /*$request->validate([
+        $messages = [
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'Debes ingresar un correo electrónico válido.',
+            'password.required' => 'La nueva contraseña es obligatoria.',
+            'password.min' => 'La nueva contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'La confirmación de contraseña no coincide.',
+        ];
+
+        $request->validate([
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8|confirmed',
-        ]);*/
+        ], $messages);
      
         // Intentar restablecer la contraseña
         $status = Password::reset(
@@ -54,8 +70,13 @@ class ResetPasswordController
             }
         );
      
-        return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('home.index')->with('status', __($status))
-                    : back()->withErrors(['email' => [__($status)]]);
+        // Verificar el estado de la operación
+        if ($status === Password::PASSWORD_RESET) {
+            // Enviar un mensaje de éxito
+            return redirect()->route('home.index')->with('status', '¡Contraseña cambiada exitosamente!');
+        } else {
+            // Enviar un mensaje de error
+            return back()->withErrors(['email' => __($status)]);
+        }
     }
 }
