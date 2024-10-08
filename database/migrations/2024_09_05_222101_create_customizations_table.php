@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('name',30);
             $table->text('description');
             $table->decimal('additional_cost', 8,2);
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }

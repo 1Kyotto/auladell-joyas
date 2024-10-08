@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin123'), // Hasheamos la contraseña
+            'password' => Hash::make('admin123'),
             'phone' => '123456789',
-            'role' => 'A', // Administrador
-            'remember_token' => Str::random(60), // Generar el remember_token
+            'role' => 'A', //Administrador
+            'remember_token' => Str::random(60),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -27,10 +27,10 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Cliente1',
             'email' => 'cliente1@gmail.com',
-            'password' => Hash::make('cliente123'), // Hasheamos la contraseña
+            'password' => Hash::make('cliente123'),
             'phone' => '987654321',
-            'role' => 'C', // Cliente
-            'remember_token' => Str::random(60), // Generar el remember_token
+            'role' => 'C', //Cliente
+            'remember_token' => Str::random(60),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -38,10 +38,10 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Cliente2',
             'email' => 'cliente2@gmail.com',
-            'password' => Hash::make('cliente321'), // Hasheamos la contraseña
+            'password' => Hash::make('cliente321'),
             'phone' => '159753852',
-            'role' => 'C', // Cliente
-            'remember_token' => Str::random(60), // Generar el remember_token
+            'role' => 'C', //Cliente
+            'remember_token' => Str::random(60),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
