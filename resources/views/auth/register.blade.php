@@ -1,73 +1,82 @@
 @extends('template.master')
 
 @section('contenido')
-<div class="flex justify-center items-center h-screen">
-    <div class="w-full max-w-md">
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-2xl font-bold text-center mb-6">Registro de Usuario</h2>
-            
-            <form method="POST" action="{{ route('register') }}">
-                @csrf <!-- Protección CSRF -->
+{{--Container--}}
+<div class="col-span-6 grid grid-cols-3 min-h-[calc(100vh-80px)] font-secundario w-full bg-[#608a78]">
+    <div class="col-span-1 col-start-2 flex flex-col justify-center items-center relative z-10">
+        {{--Mensaje--}}
+        <p class="font-primario text-6xl mb-8">Registro de Usuario</p>
+        {{--Mensaje--}}
 
-                <!-- Nombre -->
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nombre</label>
-                    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    
+        {{--Sección de login--}}
+        <div class="flex flex-col items-center">
+            {{--Form de login--}}
+            <form method="POST" action="{{ route('register') }}" class="flex flex-col items-start gap-4">
+                @csrf
+
+                {{--Nombre--}}
+                <div class="w-full">
+                    <input id="name" class="outline-none w-full bg-transparent border-b-2 placeholder-gray-900" placeholder="Nombre" type="text" name="name" value="{{ old('name') }}" autofocus>
                     @error('name')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
+                {{--Nombre--}}
 
-                <!-- Email -->
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    
+                {{--Email--}}
+                <div class="w-full">
+                    <input id="email" class="outline-none w-full mb-3 bg-transparent border-b-2 placeholder-gray-900" placeholder="Correo Electrónico" type="email" name="email" value="{{ old('email') }}" autofocus>
                     @error('email')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
+                {{--Email--}}
 
-                <!-- Teléfono -->
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Teléfono</label>
-                    <input id="phone" type="text" name="phone" value="{{ old('phone') }}" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    
-                    @error('phone')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <!-- Contraseña -->
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Contraseña</label>
-                    <input id="password" type="password" name="password" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    
+                {{--Contraseña--}}
+                <div class="w-full">
+                    <input id="password" class="outline-none w-full mb-2 bg-transparent border-b-2 placeholder-gray-900" placeholder="Contraseña" type="password" name="password">
                     @error('password')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
+                {{--Contraseña--}}
 
-                <!-- Confirmar Contraseña -->
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password_confirmation">Confirmar Contraseña</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                {{--Confirmar Contraseña--}}
+                <div class="w-full">
+                    <input id="password_confirmation" class="outline-none w-full mb-2 bg-transparent border-b-2 placeholder-gray-900" placeholder="Confirmar Contraseña" type="password" name="password_confirmation">
+                    @error('password_confirmation')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
+                {{--Confirmar Contraseña--}}
 
-                <!-- Botón de registro -->
-                <div class="flex items-center justify-between">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                {{--Teléfono--}}
+                <div class="w-full">
+                    <input id="phone" class="outline-none w-full bg-transparent border-b-2 placeholder-gray-900" placeholder="Teléfono" type="text" name="phone" value="{{ old('phone') }}">
+                    @error('phone')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                {{--Teléfono--}}
+
+                {{--Enlaces y botón--}}
+                <div class="w-full flex flex-col items-center">        
+                    <button type="submit" class="border-2 min-w-16 py-3 px-6 rounded-full text-aux bg-color-primary hover:bg-color-secondary my-6">
                         Registrarse
                     </button>
+                    <div class="items-center font-semibold text-md">
+                        <span class="mr-2">¿Ya tienes una cuenta?</span>
+                        <a href="{{ route('login') }}" class="hover:text-secondary">
+                            Inicia Sesión
+                        </a>
+                    </div>
                 </div>
+                {{--Enlaces y botón--}}
             </form>
-
-            <p class="mt-4 text-sm text-center">
-                ¿Ya tienes una cuenta? 
-                <a href="{{ route('login') }}" class="text-blue-500 hover:text-blue-700">Inicia sesión aquí</a>
-            </p>
+            {{--Form de login--}}
         </div>
+        {{--Sección de login--}}
     </div>
 </div>
+{{--Container--}}
 @endsection

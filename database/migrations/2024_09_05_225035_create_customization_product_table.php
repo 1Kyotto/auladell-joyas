@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('customization_id');
 
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('customization_id')->references('id')->on('customizations');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('customization_id')->references('id')->on('customizations')->onDelete('cascade');
         });
     }
 

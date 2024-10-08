@@ -30,18 +30,20 @@ Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordUp
 //Administrador
 Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
-Route::get('/dashboard/product', [AdminController::class, 'productManagment'])->name('admin.product')
+Route::get('/dashboard/product/{category?}', [AdminController::class, 'productManagment'])->name('admin.product')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 //Productos
-Route::get('/dashboard/product/create',[ProductController::class, 'create'])->name('product.create')
+Route::get('/dashboard/new/product/create',[ProductController::class, 'create'])->name('product.create')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
-Route::post('/dashboard/product',[ProductController::class, 'store'])->name('product.store')
+Route::post('/dashboard/new/product/store', [ProductController::class, 'store'])->name('product.store')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 Route::get('/dashboard/product/{id}/edit',[ProductController::class, 'edit'])->name('product.edit')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 Route::put('/dashboard/product/{id}',[ProductController::class, 'update'])->name('product.update')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 Route::delete('/dashboard/product/{id}',[ProductController::class, 'destroy'])->name('product.destroy')
+->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
+Route::patch('/dashboard/product/{id}/toggle', [ProductController::class, 'toggleStatus'])->name('product.toggleStatus')
 ->middleware(['auth', \App\Http\Middleware\AuthAdmin::class]);
 
 //Categoría Productos

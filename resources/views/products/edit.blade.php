@@ -1,32 +1,21 @@
 @extends('template.dashboard')
 
 @section('contenido')
-{{--FORMULARIO NUEVO PRODUCTO--}}
+{{--FORMULARIO EDICIÓN PRODUCTO--}}
 <div class="col-span-10 h-[100vh] flex flex-col items-center justify-center font-secundario">
     <div class="w-[80%] h-[5%] flex items-center justify-start">
-        <h4>Nuevo Producto</h4>
+        <h4>Editar Producto</h4>
     </div>
     <div class=" h-[80%] w-[80%] flex">
         <div class="h-full w-1/2">
-            {{--Previsualización de la imagen seleccionada--}}
-            <img id="preview-image" src="" alt="Previsualización de la imagen" class="w-full h-full object-cover hidden">
+            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" id="preview-image" class="w-full h-full object-cover">
         </div>
-        {{--Formulario de Creación--}}
+        {{--Formulario de edición--}}
         <div class="flex flex-col items-start w-1/2 ml-10">
-            {{--
-            @if ($errors->any())
-                <div class="bg-red-500 text-white p-4 rounded mb-4 w-full">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif--}}
-
-            {{--Form de creación--}}
-            <form method="POST" action="{{ route('product.store') }}" class="flex flex-col items-start w-full" enctype="multipart/form-data">
+            {{--Form de edicion--}}
+            <form method="POST" action="{{ route('product.update', $product->id) }}" class="flex flex-col items-start w-full" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
 
                 {{--Foto--}}
                 <label class="" for="product_image">Foto</label>
@@ -38,7 +27,7 @@
                 
                 {{--Nombre--}}
                 <label for="name">Nombre del Producto</label>
-                <input type="text" name="name" id="name" class="outline-none w-full py-1 px-2 mb-2 bg-transparent border-2 rounded-md placeholder-gray-900" maxlength="100">
+                <input type="text" name="name" id="name" class="outline-none w-full py-1 px-2 mb-2 bg-transparent border-2 rounded-md placeholder-gray-900" maxlength="100" value="{{ old('name', $product->name) }}" required>
                 @error('name')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
@@ -46,7 +35,7 @@
 
                 {{--Descripcion--}}
                 <label for="description">Descripción</label>
-                <textarea name="description" id="description" class="w-full py-1 px-2 mb-2 bg-transparent border-2 rounded-md placeholder-gray-900" rows="3"></textarea>
+                <textarea name="description" id="description" class="w-full py-1 px-2 mb-2 bg-transparent border-2 rounded-md placeholder-gray-900" rows="3" required>{{ old('description', $product->description) }}</textarea>
                 @error('description')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
@@ -54,12 +43,11 @@
 
                 {{--Categoría--}}
                 <label for="category">Categoría</label>
-                <select name="category" id="category" class="w-3/5">
-                    <option value="" disabled selected>Selecciona una categoría</option>
-                    <option value="Aros">Aros</option>
-                    <option value="Anillos">Anillos</option>
-                    <option value="Brazaletes">Brazaletes</option>
-                    <option value="Collares">Collares</option>
+                <select name="category" id="category" class="w-3/5" required>
+                    <option value="Aros" {{ $product->category == 'Aros' ? 'selected' : '' }}>Aros</option>
+                    <option value="Anillos" {{ $product->category == 'Anillos' ? 'selected' : '' }}>Anillos</option>
+                    <option value="Brazaletes" {{ $product->category == 'Brazaletes' ? 'selected' : '' }}>Brazaletes</option>
+                    <option value="Collares" {{ $product->category == 'Collares' ? 'selected' : '' }}>Collares</option>
                 </select>
                 @error('category')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -67,21 +55,21 @@
                 {{--Categoría--}}
 
                 {{--CHECKBOX ESTADO--}}
-                <div class="form-group form-check">
-                    <input type="checkbox" name="is_active" id="is_active" class="form-check-input" value="1" checked>
+                <div class="form-group form-check mt-3">
+                    <input type="checkbox" name="is_active" id="is_active" class="form-check-input" value="1" {{ $product->is_active ? 'checked' : '' }}>
                     <label class="form-check-label" for="is_active">¿Producto activo?</label>
                 </div>
                 {{--CHECKBOX ESTADO--}}
 
                 {{--TEST DE HORAS--}}
                 <label for="hours_worked">Horas de trabajo</label>
-                <input type="number" name="hours_worked" id="hours_worked" class="form-control" step="0.1" min="0">
+                <input type="number" name="hours_worked" id="hours_worked" class="form-control" step="0.1" min="0" value="{{ old('hours_worked', $product->hours_worked) }}">
                 @error('hours_worked')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
 
                 <label for="hourly_rate">Tarifa por hora</label>
-                <input type="number" name="hourly_rate" id="hourly_rate" class="form-control" step="0.01" min="0">
+                <input type="number" name="hourly_rate" id="hourly_rate" class="form-control" step="0.01" min="0" value="{{ old('hourly_rate', $product->hourly_rate) }}">
                 @error('hourly_rate')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
@@ -104,16 +92,24 @@
                 @error('materials.*.quantity')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
-
+                
                 <button type="button" class="btn btn-success" id="add-material">Añadir</button>
 
                     
+                {{-- Materiales previamente seleccionados --}}
                 <div id="selected-materials">
-                    <!-- Materiales seleccionados aparecerán aquí -->
+                    @foreach($product->materials as $material)
+                        <div class="selected-material-item">
+                            <span>{{ $material->name }} - Cantidad: {{ $material->pivot->quantity }}</span>
+                            <input type="hidden" name="materials[{{ $material->id }}][quantity]" value="{{ $material->pivot->quantity }}">
+                            <button type="button" class="btn btn-warning btn-sm edit-material">Editar</button>
+                            <button type="button" class="btn btn-danger btn-sm remove-material">Eliminar</button>
+                        </div>
+                    @endforeach
                 </div>
                 {{--SELECCION MATERIALES--}}
 
-                <button type="submit" class="btn btn-primary">Crear Producto</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             </form>
             {{--Form de edicion--}}
         </div>
