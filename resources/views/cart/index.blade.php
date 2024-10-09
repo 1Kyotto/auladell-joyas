@@ -5,24 +5,33 @@
 	<div class="col-span-7 col-start-2 grid grid-cols-7 bg-[#87A196] h-full">
 		<div class="col-span-4 overflow-y-auto bg-white mx-3 max-h-screen">
 			{{--TextoEjemplo--}}
-			<div class="py-1">
-				<h2 class="text-2xl">Producto ---------- Cantidad ------ Precio</h2>
+			<div class="py-1 grid grid-cols-8">
+				<div class="col-span-1 text-3xl text-start pl-5 font-semibold">Carrito:</div>
+				<div class="col-span-3 text-lg font-semibold pl-6">Producto</div>
+				<div class="col-span-2 text-lg text-start font-semibold pl-9">Cantidad</div>
+				<div class="col-span-1 col-start-7 text-lg text-start font-semibold">Precio</div>
 			</div>
-			<hr>
+			<hr class="border-black">
 			{{--sector sin card--}}
 			
 			{{--Card con datos--}}
-			<div class="py-10 px-1">
-				<div class="flex-col items-center bg-white border border-gray-200 shadow md:flex-row rounded 
+			<div class="pb-10 pt-8 px-1">
+				<div class="flex-col items-center bg-white border border-gray-200 shadow md:flex-row rounded-xl 
 				 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 w-full
 				 grid grid-cols-6 text-white">
 				 	<div class="col-span-1">
-						<img src="{{asset('images/gato1.jpg')}}" class="rounded">
+						<img src="{{asset('images/gato1.jpg')}}" class=" rounded-xl ring-4 ring-white">
 					</div>
-					<div class="col-span-2">nombre y desc</div>
-					<div class="col-span-1">cantidad</div>
-					<div class="col-span-1">precio</div>
-					<div class="col-span-1">borrar</div>
+					<div class="col-span-1 grid grid-rows-3 h-full">
+						<div class="row-span-1 flex justify-center items-center font-semibold h-full">Gato anillo</div>
+						<div class="row-span-2 flex justify-start items-start px-2 text-xs text-justify whitespace-normal w-full">Aqui una pequeña descripcion como por ejemplo el tamaño del producto</div>
+					</div>
+					<p class="col-span-1 flex justify-start items-start text-justify break-words text-sm overflow-y-auto max-h-28 max-w-full min-w-5 p-1">
+						Un texto para describir datos y detalles del objeto que está en el carro de compra.
+					</p>
+					<div class="col-span-1 ml-5">cantidad</div>
+					<div class="col-span-1 text-end pr-3">precio</div>
+					<div class="col-span-1 text-end mr-8">borrar</div>
 				</div>
 			</div>
 			{{--Card con datos--}}
@@ -100,7 +109,7 @@
 					</div>
 					<hr class="border-black">
 					<div class="flex flex-col items-center py-4">
-						<img class="w-24 h-24 m-3 rounded-full" src="{{asset('images/gato1.jpg')}}" alt="gato"/>
+						<img class="w-24 h-24 m-3 rounded-full ring-4 ring-black" src="{{asset('images/gato1.jpg')}}" alt="gato"/>
 						<h5 class="mb-1 text-xl font-medium text-black">Gato web</h5>
 						<span class="text-sm text-black">Visual Designer</span>
 						<div class="flex mt-4 md:mt-6"></div>
