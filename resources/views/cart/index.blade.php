@@ -100,26 +100,22 @@
 			<div class="row-span-3 row-start-2">
 				<div class="w-full bg-white border border-black 
 				rounded-lg shadow  dark:border-gray-700">
-					<div class="flex justify-center p-4">
-						An order summary is a document that confirms the details of your order. 
-						Incluye informacion sobre los items que pediste, costo total, direccion de envio, y metodo de pago.
-					</div>
 					<div class="flex justify-center p-2 text-2xl">
-						Precio total a pagar
+						Precio total del carrito
+					</div>
+					<hr class="border-black pb-4">
+					<div class="grid flex-col items-center grid-cols-3 grid-rows-2 pb-4">
+						<span class="col-span-2 row-span-1 text-md text-center font-bold py-3">Total de productos</span>
+						<span class="col-span-1 row-span-1 text-md text-start font-semibold py-3">$0000.00</span>
+						<span class="col-span-2 row-span-2 text-md text-center font-bold py-3">Iva del precio total</span>
+						<span class="col-span-1 row-span-2 text-md text-start font-semibold py-3">$0000.00</span>
 					</div>
 					<hr class="border-black">
-					<div class="flex flex-col items-center py-4">
-						<img class="w-24 h-24 m-3 rounded-full ring-4 ring-black" src="{{asset('images/gato1.jpg')}}" alt="gato"/>
-						<h5 class="mb-1 text-xl font-medium text-black">Gato web</h5>
-						<span class="text-sm text-black">Visual Designer</span>
-						<div class="flex mt-4 md:mt-6"></div>
-					</div>
-					<hr class="border-black">
-					<div class="flex justify-center p-4">
-						<a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 
-						focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar compra</a>
-						<a href="#" class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 
-						focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Ingresar código desc.</a>
+					<div class="grid grid-rows-2 items-center justify-center py-4">
+						<button href="#" class="row-span-1 font-medium flex items-center justify-center text-sm rounded-lg text-center px-20 py-1 my-1 text-white bg-blue-700 hover:bg-blue-800 
+						focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar la compra</button>
+						<button href="#" class="row-span-1 font-medium flex items-center justify-center text-sm rounded-lg text-center px-20 py-1 my-1 text-white bg-blue-700 hover:bg-blue-800 
+						focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ingresar un código desc.</button>
 					</div>
 				</div>
 			</div>
