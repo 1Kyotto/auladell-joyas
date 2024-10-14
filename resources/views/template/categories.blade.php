@@ -1,11 +1,11 @@
 @extends('template.master')
 
 @section('contenido')
-<div class="main col-span-6 grid grid-cols-6">
-    <div class="col-span-2 bg-orange-700">
+<div class="main col-span-6 grid grid-rows-1">
+    <div class="row-span-1">
         @yield('contenido-filtros')
     </div>
-    <div class="col-span-4 bg-amber-500">
+    <div class="row-span-1">
         @yield('contenido-joyas')
     </div>
 </div>

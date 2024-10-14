@@ -1,7 +1,74 @@
 @extends('template.master')
 
 @section('contenido')
-<div class="col-span-6 grid grid-rows-3 bg-teal-600">
+<div class="col-span-6 text-center py-5 border-y border-black bg-cyan-200 text-3xl"> Contactanos! </div>
+<div class="col-span-6 grid grid-cols-2 bg-teal-600">
+    <div class="col-span-1 grid grid-rows-2 bg-red-400">
+        <div class="px-10 pt-5">
+            <p class="text-xl pb-7 pt-3">Ingrese sus datos y comentario para contactar!</p>
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-black">Nombre</label>
+                    <input type="text" id="first_name" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Juan" required />
+                </div>
+                <div>
+                    <label for="last_name" class="block mb-2 text-sm font-medium text-black">Apellido(s)</label>
+                    <input type="text" id="last_name" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Perez" required />
+                </div>
+                <div>
+                    <label for="company" class="block mb-2 text-sm font-medium text-black">Ciudad</label>
+                    <input type="text" id="company" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Viña del Mar" required />
+                </div>  
+                <div>
+                    <label for="phone" class="block mb-2 text-sm font-medium text-black">Numero de telefono</label>
+                    <input type="tel" id="phone" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400
+                     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="+56 9 1234 5678" required />
+                </div>
+                <div class="col-span-2">
+                    <label for="email" class="block mb-2 text-sm font-medium text-black">Email address</label>
+                    <input type="email" id="email" class="bg-white border border-gray-300 text-black text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 
+                    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="usuario1@gmail.com" required />
+                </div> 
+            </div>
+        </div>
+        <div class="row-span-1 px-10 py-5">
+            <div class="grid grid-rows-2">
+                <div class="row-span-1 pb-5">
+                    {{--Cuadro de texto para descripcion--}}
+                    <label for="message" class="block mb-2 text-sm font-medium text-black">Your message</label>
+                    <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-black bg-gray-50 rounded-lg 
+                    border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:white dark:border-gray-600 
+                    dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                </div>
+                <div class="row-span-1">
+                    {{--Parte donde iran botones--}}
+                    <button type="button" class="px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-3.5 h-3.5 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                        <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
+                        <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
+                        </svg>
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-span-1 grid grid-rows-3">
+        <div class=" row-span-1">a</div>
+        <div class=" row-span-1">b</div>
+        <div class=" row-span-1">c</div>
+    </div>
+
+
+    {{--
     <div class="grid grid-cols-1">
         <div class="col-span-1"></div>
         <div class="col-span-1"></div>
@@ -18,6 +85,7 @@
         <p class="col-span-3">parrafo 3 de datos</p>
         <p class="col-span-3">parrafo para links</p>
     </div>
+    
     
     <div class="grid grid-cols-3">
         <div class="col-span-1"></div>
@@ -48,6 +116,7 @@
         </div>
         <div class="col-span-1"></div>
     </div>
+    --}}
 
 </div>
 @endsection

@@ -13,9 +13,15 @@
         <nav class="bg-white col-span-6 text-black grid grid-cols-6 py-3 shadow-sm transition-transform duration-300 sticky top-0 z-20">
             {{--LOGO--}}
             <div class="ml-32 col-span-2">
-                <a href="{{ route('home.index') }}" class="flex justify-start items-center gap-8">
-                    <img class="h-12" src="{{ asset('images/logo.png') }}" alt="logo-auladelljoyas"></img>
-                    <h2 class="text-primary hover:text-secondary transition-colors duration-150 font-primario font-medium text-3xl">Auladell Joyas</h2>
+                <a href="{{ route('home.index') }}" class="flex justify-start items-center gap-4">
+                    <h2 class="text-secondary flex justify-start items-center transition-colors duration-150 font-primario font-medium text-3xl">
+                        Auladell
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" viewBox="0 0 24 24" width="19" height="19" color="#000000" fill="none">
+                            <path d="M3 12C7.97056 12 12 7.97056 12 3C12 7.97056 16.0294 12 21 12C16.0294 12 12 16.0294 12 21C12 16.0294 7.97056 12 3 12Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                        </svg>
+                        Joyas
+                    </h2>
+                    <img class="h-16" src="{{ asset('images/logo.png') }}" alt="logo-auladelljoyas"></img>
                 </a>
             </div>
             {{--LOGO--}}
